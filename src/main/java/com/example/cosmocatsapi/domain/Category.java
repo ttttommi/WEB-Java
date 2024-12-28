@@ -3,11 +3,12 @@ package com.example.cosmocatsapi.domain;
 import lombok.Builder;
 import lombok.Value;
 import lombok.NonNull;
+import java.util.UUID;
 
 @Value
 @Builder
 public class Category {
-    long id;
+    UUID id; 
 
     @NonNull
     String name;
@@ -15,3 +16,4 @@ public class Category {
     @NonNull
     String description;
 }
+

@@ -5,13 +5,15 @@ import com.example.cosmocatsapi.dto.validation.CosmicWordCheck;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Positive;  
+import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Value;
+import org.springframework.validation.annotation.Validated;
 
 @Value
 @Builder
+@Validated 
 public class ProductRequestDto {
 
     @NotBlank(groups = CreateGroup.class, message = "Product name is required")
@@ -24,6 +26,7 @@ public class ProductRequestDto {
     String description;
 
     @NotNull(groups = CreateGroup.class, message = "Product price is required")
+    @Positive(groups = CreateGroup.class, message = "Product price must be positive")
     BigDecimal price;
 
     @NotNull(groups = CreateGroup.class, message = "Product category is required")
@@ -31,4 +34,3 @@ public class ProductRequestDto {
 
     ProductStatus productStatus;
 }
-

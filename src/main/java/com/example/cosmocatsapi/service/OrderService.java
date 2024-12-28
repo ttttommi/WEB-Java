@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderService {
-    OrderResponseDto addOrder(OrderRequestDto orderRequestDto);
+    OrderResponseDto addOrder(OrderRequestDto orderRequestDto); 
 
-    Optional<OrderResponseDto> getOrder(String orderId);
+    Optional<OrderResponseDto> getOrder(String orderId); 
 
     List<OrderResponseDto> getAllOrders(String status); 
+
+    OrderResponseDto updateOrder(String orderId, OrderRequestDto orderRequestDto); 
+
+    void deleteOrder(String orderId); 
 }

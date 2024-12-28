@@ -4,11 +4,14 @@ import com.example.cosmocatsapi.common.OrderStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
 import java.math.BigDecimal;
 import java.util.List;
-import lombok.Value;
 
 @Value
+@Jacksonized
 public class OrderRequestDto {
 
     @NotNull(message = "The list of order items must not be null.") 

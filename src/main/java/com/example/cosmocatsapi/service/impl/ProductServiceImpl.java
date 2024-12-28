@@ -44,26 +44,26 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDto getProductById(Long id) {
         Product product = findProductById(id).orElseThrow(() -> 
-            new ProductNotFoundException("Product with ID: " + id + " does not exist.")
+            new ProductNotFoundException(String.format("Product with ID: %d does not exist.", id))
         );
         return productMapper.toProductResponseDto(product);
     }
-
+    
     @Override
     public ProductResponseDto updateProduct(Long id, ProductRequestDto productRequestDto) {
         Product productToUpdate = findProductById(id).orElseThrow(() -> 
-            new ProductNotFoundException("Product with ID: " + id + " not found for update.")
+            new ProductNotFoundException(String.format("Product with ID: %d not found for update.", id))
         );
-
+    
         if (productRequestDto.getName() != null) productToUpdate.setName(productRequestDto.getName());
         if (productRequestDto.getDescription() != null) productToUpdate.setDescription(productRequestDto.getDescription());
         if (productRequestDto.getPrice() != null) productToUpdate.setPrice(productRequestDto.getPrice());
         if (productRequestDto.getProductStatus() != null) productToUpdate.setProductStatus(productRequestDto.getProductStatus());
         if (productRequestDto.getCategoryId() != null) productToUpdate.setCategoryId(productRequestDto.getCategoryId());
-
+    
         return productMapper.toProductResponseDto(productToUpdate);
     }
-
+    
     @Override
     public void deleteProduct(Long id) {
         Product productToDelete = findProductById(id).orElseThrow(() -> 
